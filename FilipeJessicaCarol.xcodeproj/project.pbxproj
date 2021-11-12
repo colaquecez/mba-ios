@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		5497AE08273DFD4A00E37A6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497AE07273DFD4A00E37A6C /* AppDelegate.swift */; };
 		5497AE0A273DFD4A00E37A6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497AE09273DFD4A00E37A6C /* SceneDelegate.swift */; };
-		5497AE0C273DFD4A00E37A6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497AE0B273DFD4A00E37A6C /* ViewController.swift */; };
+		5497AE0C273DFD4A00E37A6C /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497AE0B273DFD4A00E37A6C /* HomeController.swift */; };
 		5497AE0F273DFD4A00E37A6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5497AE0D273DFD4A00E37A6C /* Main.storyboard */; };
 		5497AE11273DFD4C00E37A6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5497AE10273DFD4C00E37A6C /* Assets.xcassets */; };
 		5497AE14273DFD4C00E37A6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5497AE12273DFD4C00E37A6C /* LaunchScreen.storyboard */; };
+		5497AE1E273E254B00E37A6C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5497AE1D273E254B00E37A6C /* Home.storyboard */; };
+		5497AE24273E2E7A00E37A6C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5497AE23273E2E7A00E37A6C /* Settings.storyboard */; };
+		5497AE2A273E301C00E37A6C /* Purchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5497AE29273E301C00E37A6C /* Purchases.storyboard */; };
+		5497AE2C273E38D500E37A6C /* DetailProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497AE2B273E38D500E37A6C /* DetailProduct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5497AE04273DFD4A00E37A6C /* FilipeJessicaCarol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilipeJessicaCarol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5497AE07273DFD4A00E37A6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5497AE09273DFD4A00E37A6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5497AE0B273DFD4A00E37A6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5497AE0B273DFD4A00E37A6C /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		5497AE0E273DFD4A00E37A6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5497AE10273DFD4C00E37A6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5497AE13273DFD4C00E37A6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5497AE15273DFD4C00E37A6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5497AE1D273E254B00E37A6C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		5497AE23273E2E7A00E37A6C /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		5497AE29273E301C00E37A6C /* Purchases.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchases.storyboard; sourceTree = "<group>"; };
+		5497AE2B273E38D500E37A6C /* DetailProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProduct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,83 @@
 		5497AE06273DFD4A00E37A6C /* FilipeJessicaCarol */ = {
 			isa = PBXGroup;
 			children = (
+				5497AE1F273E270300E37A6C /* Modules */,
 				5497AE07273DFD4A00E37A6C /* AppDelegate.swift */,
 				5497AE09273DFD4A00E37A6C /* SceneDelegate.swift */,
-				5497AE0B273DFD4A00E37A6C /* ViewController.swift */,
 				5497AE0D273DFD4A00E37A6C /* Main.storyboard */,
 				5497AE10273DFD4C00E37A6C /* Assets.xcassets */,
 				5497AE12273DFD4C00E37A6C /* LaunchScreen.storyboard */,
 				5497AE15273DFD4C00E37A6C /* Info.plist */,
 			);
 			path = FilipeJessicaCarol;
+			sourceTree = "<group>";
+		};
+		5497AE1F273E270300E37A6C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5497AE27273E2FFE00E37A6C /* Purchases */,
+				5497AE25273E2E9100E37A6C /* Settings */,
+				5497AE20273E270C00E37A6C /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5497AE20273E270C00E37A6C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5497AE22273E2BCD00E37A6C /* Controllers */,
+				5497AE21273E271D00E37A6C /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5497AE21273E271D00E37A6C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5497AE1D273E254B00E37A6C /* Home.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5497AE22273E2BCD00E37A6C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5497AE0B273DFD4A00E37A6C /* HomeController.swift */,
+				5497AE2B273E38D500E37A6C /* DetailProduct.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5497AE25273E2E9100E37A6C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5497AE26273E2E9A00E37A6C /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		5497AE26273E2E9A00E37A6C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5497AE23273E2E7A00E37A6C /* Settings.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5497AE27273E2FFE00E37A6C /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				5497AE28273E300600E37A6C /* Views */,
+			);
+			path = Purchases;
+			sourceTree = "<group>";
+		};
+		5497AE28273E300600E37A6C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5497AE29273E301C00E37A6C /* Purchases.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +202,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5497AE14273DFD4C00E37A6C /* LaunchScreen.storyboard in Resources */,
+				5497AE2A273E301C00E37A6C /* Purchases.storyboard in Resources */,
 				5497AE11273DFD4C00E37A6C /* Assets.xcassets in Resources */,
 				5497AE0F273DFD4A00E37A6C /* Main.storyboard in Resources */,
+				5497AE1E273E254B00E37A6C /* Home.storyboard in Resources */,
+				5497AE24273E2E7A00E37A6C /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +217,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5497AE0C273DFD4A00E37A6C /* ViewController.swift in Sources */,
+				5497AE0C273DFD4A00E37A6C /* HomeController.swift in Sources */,
 				5497AE08273DFD4A00E37A6C /* AppDelegate.swift in Sources */,
+				5497AE2C273E38D500E37A6C /* DetailProduct.swift in Sources */,
 				5497AE0A273DFD4A00E37A6C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,9 +372,11 @@
 				DEVELOPMENT_TEAM = N25Y66HM7B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilipeJessicaCarol/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Compras USA";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,9 +402,11 @@
 				DEVELOPMENT_TEAM = N25Y66HM7B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilipeJessicaCarol/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Compras USA";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
