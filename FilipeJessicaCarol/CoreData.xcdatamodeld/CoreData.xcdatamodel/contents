@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ProductEntity" representedClassName="ProductEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="URI"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="state" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StateEntity"/>
+    </entity>
+    <entity name="StateEntity" representedClassName="StateEntity" syncable="YES" codeGenerationType="class"/>
+    <elements>
+        <element name="ProductEntity" positionX="-189.7820434570312" positionY="-149.9352722167969" width="128" height="88"/>
+        <element name="StateEntity" positionX="-54" positionY="9" width="128" height="43"/>
+    </elements>
+</model>

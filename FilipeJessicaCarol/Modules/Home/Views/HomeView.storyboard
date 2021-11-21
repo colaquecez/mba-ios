@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail Product-->
+        <!--Detail Product View Controller-->
         <scene sceneID="Xiy-MG-JxQ">
             <objects>
-                <viewController id="2nQ-9r-3Ny" customClass="DetailProduct" customModule="FilipeJessicaCarol" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDetailStoryboard" id="2nQ-9r-3Ny" customClass="DetailProductViewController" customModule="FilipeJessicaCarol" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bbf-kp-aOQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -161,6 +161,7 @@
                     <navigationItem key="navigationItem" id="lKX-Vq-xhP"/>
                     <connections>
                         <outlet property="ImageView" destination="a0Y-Cc-p3s" id="WVn-kq-SFN"/>
+                        <outlet property="btRegister" destination="8F2-7j-ZWr" id="RmC-r7-gkj"/>
                         <outlet property="imageView" destination="a0Y-Cc-p3s" id="TMa-iI-oK2"/>
                         <outlet property="labelAddImage" destination="EQL-UE-NMd" id="mwX-WO-pRu"/>
                         <outlet property="nameProduct" destination="RHB-6c-N8s" id="HMO-dQ-TXv"/>
@@ -189,28 +190,18 @@
         <!--Compras-->
         <scene sceneID="fP2-Vf-4hR">
             <objects>
-                <tableViewController id="sAU-Zs-6TZ" customClass="HomeController" customModule="FilipeJessicaCarol" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="j4U-fn-DzA">
+                <tableViewController id="sAU-Zs-6TZ" customClass="HomeViewController" customModule="FilipeJessicaCarol" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="j4U-fn-DzA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sua lista está vazia!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PEX-6x-MKw">
-                            <rect key="frame" x="0.0" y="110.5" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CellPurchases" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellPurchases" id="lPb-d6-jHH" userLabel="CellPurchases">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lPb-d6-jHH" id="UKy-Pi-C2z">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="sAU-Zs-6TZ" id="rsT-k2-6yU"/>

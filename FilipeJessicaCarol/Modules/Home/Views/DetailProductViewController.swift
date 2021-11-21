@@ -7,7 +7,7 @@
 import UIKit
 import PhotosUI
 
-class DetailProduct: UIViewController {
+class DetailProductViewController: UIViewController {
     
     
     @IBOutlet weak var imageView: UIImageView!
@@ -17,15 +17,19 @@ class DetailProduct: UIViewController {
     @IBOutlet weak var switchCard: UISwitch!
     @IBOutlet weak var labelAddImage: UILabel!
     
+    @IBOutlet weak var btRegister: UIButton!
     @IBOutlet weak var nameProductLabel: UILabel!
     @IBOutlet weak var stateProductLabel: UILabel!
     @IBOutlet weak var valueProductLabel: UILabel!
     
     var cameraAvailable: Bool = false
+    var imageShowCase: String?
+    var selectedProduct: Purchase?
+    let homeController = HomeController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      if  UIImagePickerController.isSourceTypeAvailable(.camera) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
             cameraAvailable = true
         }
         imageView.isUserInteractionEnabled = true
@@ -33,16 +37,47 @@ class DetailProduct: UIViewController {
         stateProductLabel.isHidden = true
         valueProductLabel.isHidden = true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
+        checkSelectedProduct()
     }
- 
+    
+    
+    func checkSelectedProduct() {
+        guard let selectedProduct = selectedProduct else {
+            return
+        }
+        
+        btRegister.setTitle("Editar", for: .normal)
+        nameProduct.text = selectedProduct.name
+        stateProduct.text = selectedProduct.state
+        valueProduct.text = String(selectedProduct.value)
+        imageView.image = UIImage(data: selectedProduct.image)
+        labelAddImage.isHidden = true
+        
+    }
+    
     @IBAction func onClickRegister(_ sender: Any) {
-        if(validateFields()) {
-            print("PASSOU")
+        if validateFields() {
+            
+            if let selectedProduct = selectedProduct {
+                
+                selectedProduct.name = nameProduct.text!
+                selectedProduct.value = Float(valueProduct.text!)!
+                selectedProduct.state = stateProduct.text!
+                selectedProduct.image = imageView.image!.jpegData(compressionQuality: 1.0)!
+                
+                homeController.changePurchaseById(sku: selectedProduct.sku, purchase: selectedProduct)
+                return
+            }
+            
+            let purchase = Purchase(name: nameProduct.text ?? "", state: stateProduct.text ?? "", value: Float(valueProduct.text ?? "0")!, isCard: true, sku: UUID().uuidString, image: imageView.image!.jpegData(compressionQuality: 1.0)!)
+
+            homeController.saveOnCoreData(purchase: purchase)
+         
         }
     }
     
     @IBAction func onPressPlusButton(_ sender: Any) {
-       performSegue(withIdentifier: "SettingScreen", sender: self)
+        performSegue(withIdentifier: "SettingScreen", sender: self)
     }
     
     func validateFields() -> Bool {
@@ -71,6 +106,7 @@ class DetailProduct: UIViewController {
         } else {valueProductLabel.isHidden = true }
         
         if(!nameIsEmpty && !stateIsEmpty && !valueIsEmpty) {
+            
             return true
         }
         
@@ -78,7 +114,7 @@ class DetailProduct: UIViewController {
     }
     
     
-     private func showPicker(alertARgument: UIAlertAction!) {
+    private func showPicker(alertARgument: UIAlertAction!) {
         var config:PHPickerConfiguration = PHPickerConfiguration()
         config.filter = PHPickerFilter.images
         config.selectionLimit = 1
@@ -86,9 +122,9 @@ class DetailProduct: UIViewController {
         let picker: PHPickerViewController = PHPickerViewController(configuration: config)
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)
-
+        
     }
-
+    
     private func showCamera(alertArgument:UIAlertAction!) {
         let ac = UIImagePickerController()
         ac.allowsEditing = true
@@ -109,14 +145,14 @@ class DetailProduct: UIViewController {
         
         ac.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         present(ac, animated: true, completion: nil)
-      
+        
     }
 }
 
-extension DetailProduct: PHPickerViewControllerDelegate {
+extension DetailProductViewController: PHPickerViewControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-    
+        
         guard !results.isEmpty else {
             dismiss(animated: true, completion: nil)
             return
@@ -136,7 +172,7 @@ extension DetailProduct: PHPickerViewControllerDelegate {
     }
 }
 
-extension DetailProduct: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension DetailProductViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
