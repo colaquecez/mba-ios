@@ -77,7 +77,6 @@ class HomeController: NSObject {
         }
     }
     
-    
     func saveOnCoreData(purchase: Purchase) {
         let managedContext = context
         let newEntity = NSEntityDescription.entity(forEntityName: "Product", in: managedContext)!
@@ -94,6 +93,28 @@ class HomeController: NSObject {
             try managedContext.save()
         } catch let error as NSError {
             print("Houve um erro \(error)")
+        }
+    }
+    
+    func deletePurchaseById(sku: String) {
+        let managedContext = context
+        let newEntity = NSEntityDescription.entity(forEntityName: "Product", in: managedContext)!
+        let request = NSFetchRequest<NSFetchRequestResult>()
+        request.entity = newEntity
+        let predicate = NSPredicate(format: "(sku = %@)", sku)
+        request.predicate = predicate
+        
+        do {
+            let results =
+            try managedContext.fetch(request)
+            let objectToDelete = results[0] as! NSManagedObject
+            
+           managedContext.delete(objectToDelete)
+           try managedContext.save()
+           loadingPurchases()
+                       
+        } catch {
+            print("error")
         }
     }
 }

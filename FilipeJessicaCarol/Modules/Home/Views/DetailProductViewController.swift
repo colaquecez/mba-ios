@@ -21,6 +21,7 @@ class DetailProductViewController: UIViewController {
     @IBOutlet weak var nameProductLabel: UILabel!
     @IBOutlet weak var stateProductLabel: UILabel!
     @IBOutlet weak var valueProductLabel: UILabel!
+    @IBOutlet weak var imageLabel: UILabel!
     
     var cameraAvailable: Bool = false
     var imageShowCase: String?
@@ -36,6 +37,7 @@ class DetailProductViewController: UIViewController {
         nameProductLabel.isHidden = true
         stateProductLabel.isHidden = true
         valueProductLabel.isHidden = true
+        imageLabel.isHidden = true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
         checkSelectedProduct()
     }
@@ -66,13 +68,14 @@ class DetailProductViewController: UIViewController {
                 selectedProduct.image = imageView.image!.jpegData(compressionQuality: 1.0)!
                 
                 homeController.changePurchaseById(sku: selectedProduct.sku, purchase: selectedProduct)
+                navigationController?.popViewController(animated: true)
                 return
             }
             
             let purchase = Purchase(name: nameProduct.text ?? "", state: stateProduct.text ?? "", value: Float(valueProduct.text ?? "0")!, isCard: true, sku: UUID().uuidString, image: imageView.image!.jpegData(compressionQuality: 1.0)!)
-
-            homeController.saveOnCoreData(purchase: purchase)
-         
+                homeController.saveOnCoreData(purchase: purchase)
+                navigationController?.popViewController(animated: true)
+            
         }
     }
     
@@ -93,19 +96,27 @@ class DetailProductViewController: UIViewController {
             return false
         }
         
-        if(nameIsEmpty) {
+        if nameIsEmpty {
             nameProductLabel.isHidden = false
         } else { nameProductLabel.isHidden = true }
         
-        if(stateIsEmpty) {
+        if stateIsEmpty {
             stateProductLabel.isHidden = false
         } else { stateProductLabel.isHidden = true }
         
-        if(valueIsEmpty) {
+        if valueIsEmpty {
             valueProductLabel.isHidden = false
-        } else {valueProductLabel.isHidden = true }
+        } else { valueProductLabel.isHidden = true }
         
-        if(!nameIsEmpty && !stateIsEmpty && !valueIsEmpty) {
+        if imageView.image?.size.width != nil {
+            imageLabel.isHidden = true
+        } else {
+            imageLabel.isHidden = false
+            return false
+            
+        }
+        
+        if !nameIsEmpty && !stateIsEmpty && !valueIsEmpty {
             
             return true
         }

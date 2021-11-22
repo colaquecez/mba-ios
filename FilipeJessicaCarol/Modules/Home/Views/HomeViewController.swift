@@ -38,7 +38,9 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
        
         if editingStyle == .delete {
-            print("dekete")
+            let purchase = homeController.getProductByIndex(indexPath: indexPath)
+            homeController.deletePurchaseById(sku: purchase.sku)
+            tableView.reloadData()
         }
     }
     

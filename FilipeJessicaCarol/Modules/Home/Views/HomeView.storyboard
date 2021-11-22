@@ -117,11 +117,18 @@
                                     <action selector="onClickRegister:" destination="2nQ-9r-3Ny" eventType="touchUpInside" id="2Lk-tf-Qu5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imagem obrigatória" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ta-vs-ohg">
+                                <rect key="frame" x="16" y="368" width="110" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1fO-jX-s2o"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BHR-vO-koo" firstAttribute="top" secondItem="a0Y-Cc-p3s" secondAttribute="bottom" constant="16" id="0Mx-Y0-Yhe"/>
+                            <constraint firstItem="8Ta-vs-ohg" firstAttribute="leading" secondItem="1fO-jX-s2o" secondAttribute="leading" constant="16" id="6fU-Q3-uAD"/>
                             <constraint firstItem="Vn7-Lx-EXZ" firstAttribute="top" secondItem="5Qt-H8-07s" secondAttribute="bottom" constant="16" id="741-IQ-EgM"/>
                             <constraint firstItem="BWG-LE-NP3" firstAttribute="leading" secondItem="1fO-jX-s2o" secondAttribute="leading" constant="16" id="AJ3-rd-88D"/>
                             <constraint firstItem="EQL-UE-NMd" firstAttribute="centerY" secondItem="a0Y-Cc-p3s" secondAttribute="centerY" id="CEp-vt-3Tm"/>
@@ -133,6 +140,7 @@
                             <constraint firstItem="5Qt-H8-07s" firstAttribute="top" secondItem="a0Y-Cc-p3s" secondAttribute="bottom" constant="16" id="KZg-TI-GU9"/>
                             <constraint firstItem="fte-07-HcA" firstAttribute="leading" secondItem="1fO-jX-s2o" secondAttribute="leading" constant="16" id="Lv6-3D-SoB"/>
                             <constraint firstItem="RHB-6c-N8s" firstAttribute="top" secondItem="1fO-jX-s2o" secondAttribute="top" constant="16" id="NFz-sE-Kco"/>
+                            <constraint firstItem="8Ta-vs-ohg" firstAttribute="top" secondItem="a0Y-Cc-p3s" secondAttribute="bottom" constant="1" id="NH1-05-eJw"/>
                             <constraint firstItem="a0Y-Cc-p3s" firstAttribute="top" secondItem="BWG-LE-NP3" secondAttribute="bottom" constant="1" id="PHL-0j-wBm"/>
                             <constraint firstItem="RHB-6c-N8s" firstAttribute="leading" secondItem="1fO-jX-s2o" secondAttribute="leading" constant="16" id="Vph-gR-8vf"/>
                             <constraint firstItem="Vn7-Lx-EXZ" firstAttribute="leading" secondItem="1fO-jX-s2o" secondAttribute="leading" constant="16" id="Xqb-xK-s16"/>
@@ -162,6 +170,7 @@
                     <connections>
                         <outlet property="ImageView" destination="a0Y-Cc-p3s" id="WVn-kq-SFN"/>
                         <outlet property="btRegister" destination="8F2-7j-ZWr" id="RmC-r7-gkj"/>
+                        <outlet property="imageLabel" destination="8Ta-vs-ohg" id="WOC-td-dmZ"/>
                         <outlet property="imageView" destination="a0Y-Cc-p3s" id="TMa-iI-oK2"/>
                         <outlet property="labelAddImage" destination="EQL-UE-NMd" id="mwX-WO-pRu"/>
                         <outlet property="nameProduct" destination="RHB-6c-N8s" id="HMO-dQ-TXv"/>
