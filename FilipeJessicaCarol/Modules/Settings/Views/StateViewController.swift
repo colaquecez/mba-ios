@@ -24,18 +24,28 @@ class StateViewController: UITableViewController {
     
     
     @IBAction func clickOnAddState(_ sender: Any) {
-        showModalInputState()
+        showModalInputState(stateToChange: nil)
     }
     
-    func showModalInputState() {
+    func showModalInputState(stateToChange:States?) {
+            
         let alertController = UIAlertController(title: "Adicionar Estado", message: nil, preferredStyle: .alert)
+        
         let confirmAction = UIAlertAction(title: "Add", style: .default) { [self] (_) in
             if let stateName = alertController.textFields?.first, let textState = stateName.text {
                 // operations
                 
-                if let taxes = alertController.textFields?[1], let textTaxes = taxes.text {
+                if let taxes = alertController.textFields?.last, let textTaxes = taxes.text {
+                    
                     
                     let newState = States(name: textState, taxes: Float(textTaxes) ?? 0, id: UUID().uuidString)
+                    
+                    if let stateToChange = stateToChange {
+                        stateControler.changeStateById(id: stateToChange.id, state: newState)
+                        
+                      return  tableView.reloadData()
+                    }
+                    
                     stateControler.saveOnCoreData(state: newState)
                     tableView.reloadData()
                 }
@@ -50,6 +60,13 @@ class StateViewController: UITableViewController {
         alertController.addTextField { (taxes) in
             taxes.placeholder = "Imposto"
         }
+        
+        
+        if let taxeSelected = stateToChange {
+            alertController.textFields!.first!.text = taxeSelected.name
+            alertController.textFields!.last!.text = String(taxeSelected.taxes)
+        }
+        
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
@@ -69,6 +86,15 @@ class StateViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stateControler.numberOfRowsInSection()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        let stateSelected = stateControler.getStateByIndex(indexPath: indexPath)
+        showModalInputState(stateToChange: stateSelected)
+        
+        print("entrou")
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
