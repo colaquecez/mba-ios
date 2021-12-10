@@ -38,10 +38,16 @@ class DetailProductViewController: UIViewController {
         stateProductLabel.isHidden = true
         valueProductLabel.isHidden = true
         imageLabel.isHidden = true
+        switchCard.addTarget(self, action: #selector(didTapCard), for: UIControl.Event.valueChanged)
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
         checkSelectedProduct()
     }
     
+    
+    @objc func didTapCard(mySwitch: UISwitch) {
+        let value = mySwitch.isOn
+        switchCard.isOn = value
+    }
     
     func checkSelectedProduct() {
         guard let selectedProduct = selectedProduct else {
@@ -54,8 +60,11 @@ class DetailProductViewController: UIViewController {
         valueProduct.text = String(selectedProduct.value)
         imageView.image = UIImage(data: selectedProduct.image)
         labelAddImage.isHidden = true
+        switchCard.isOn = selectedProduct.isCard
         
     }
+    
+    
     
     @IBAction func onClickRegister(_ sender: Any) {
         if validateFields() {
@@ -66,13 +75,14 @@ class DetailProductViewController: UIViewController {
                 selectedProduct.value = Float(valueProduct.text!)!
                 selectedProduct.state = stateProduct.text!
                 selectedProduct.image = imageView.image!.jpegData(compressionQuality: 1.0)!
+                selectedProduct.isCard = switchCard.isOn
                 
                 homeController.changePurchaseById(sku: selectedProduct.sku, purchase: selectedProduct)
                 navigationController?.popViewController(animated: true)
                 return
             }
             
-            let purchase = Purchase(name: nameProduct.text ?? "", state: stateProduct.text ?? "", value: Float(valueProduct.text ?? "0")!, isCard: true, sku: UUID().uuidString, image: imageView.image!.jpegData(compressionQuality: 1.0)!)
+            let purchase = Purchase(name: nameProduct.text ?? "", state: stateProduct.text ?? "", value: Float(valueProduct.text ?? "0")!, isCard: switchCard.isOn, sku: UUID().uuidString, image: imageView.image!.jpegData(compressionQuality: 1.0)!)
                 homeController.saveOnCoreData(purchase: purchase)
                 navigationController?.popViewController(animated: true)
             

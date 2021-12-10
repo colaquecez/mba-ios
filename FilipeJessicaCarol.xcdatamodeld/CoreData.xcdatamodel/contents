@@ -9,10 +9,12 @@
         <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="State" representedClassName="State" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="taxes" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Product" positionX="-45" positionY="0" width="128" height="133"/>
-        <element name="State" positionX="-18" positionY="45" width="128" height="44"/>
+        <element name="Product" positionX="-45" positionY="0" width="128" height="119"/>
+        <element name="State" positionX="-18" positionY="45" width="128" height="74"/>
     </elements>
 </model>

@@ -8,40 +8,81 @@
 import UIKit
 import CoreData
 
-class StateController: UITableViewController {
+class StateController: NSObject {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    private var states: [States] = []
+    
+    
+    func numberOfRowsInSection() -> Int {
+        return states.count
     }
     
-    func addNewState() {
-        let state = States(name: "testando")
+    func getStateByIndex(indexPath: IndexPath) -> States {
+        return states[indexPath.row]
+    }
+    
+    func loadingStates() {
         let managedContext = context
-        let newEntity = NSEntityDescription.entity(forEntityName: "State", in: managedContext)!
-        let newProduct = NSManagedObject(entity: newEntity, insertInto: managedContext)
-        newProduct.setValue(state.name, forKey: "name")
+        states = []
+        
+        let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "State")
         
         do {
+            let result = try managedContext.fetch(fetchReq)
+            for data in result as! [NSManagedObject] {
+                let name = data.value(forKey: "name") as? String ?? ""
+                let taxes = data.value(forKey: "taxes") as? Float ?? 0
+                let id = data.value(forKey: "id") as! String
+                let newState = States(name: name, taxes: taxes, id: id)
+                
+                states.append(newState)
+            }
+        }catch {
+            print("error")
+        }
+    }
+    
+    func deleteStateById(id: String) {
+        let managedContext = context
+       
+        let newEntity = NSEntityDescription.entity(forEntityName: "State", in: managedContext)!
+        let request = NSFetchRequest<NSFetchRequestResult>()
+        request.entity = newEntity
+        let predicate = NSPredicate(format: "(id = %@)", id)
+        request.predicate = predicate
+
+        do {
+            let results =
+            try managedContext.fetch(request)
+            let objectToDelete = results[0] as! NSManagedObject
+
+           managedContext.delete(objectToDelete)
+           try managedContext.save()
+           loadingStates()
+
+        } catch {
+            print("error")
+        }
+    }
+    
+    
+    func saveOnCoreData(state: States) {
+        let managedContext = context
+        let newEntity = NSEntityDescription.entity(forEntityName: "State", in: managedContext)!
+        let newState = NSManagedObject(entity: newEntity, insertInto: managedContext)
+   
+        newState.setValue(state.name, forKey: "name")
+        newState.setValue(state.taxes, forKey: "taxes")
+        newState.setValue(state.id, forKey: "id")
+      
+        do {
             try managedContext.save()
+            self.loadingStates()
         } catch let error as NSError {
             print("Houve um erro \(error)")
         }
-        print("PASSOU")
     }
     
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 0
-    }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCells", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = "222"
-        cell.contentConfiguration = content
-        return cell
-    }
-
 }

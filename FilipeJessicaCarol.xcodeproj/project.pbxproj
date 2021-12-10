@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		542C21D42745835500F7CF3B /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542C21D32745835500F7CF3B /* StateController.swift */; };
+		540F087F2762C15D00D893AF /* StateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F087D2762C15D00D893AF /* StateTableViewCell.swift */; };
+		540F08802762C15D00D893AF /* StateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540F087E2762C15D00D893AF /* StateTableViewCell.xib */; };
+		542C21D42745835500F7CF3B /* StateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542C21D32745835500F7CF3B /* StateViewController.swift */; };
 		542C21DB2746906100F7CF3B /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542C21DA2746906100F7CF3B /* Context.swift */; };
 		542C21E12746928F00F7CF3B /* FilipeJessicaCarol.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 542C21DF2746928F00F7CF3B /* FilipeJessicaCarol.xcdatamodeld */; };
 		542C222A27469A3200F7CF3B /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542C222927469A3200F7CF3B /* Purchase.swift */; };
@@ -22,13 +24,16 @@
 		5497AE24273E2E7A00E37A6C /* SettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5497AE23273E2E7A00E37A6C /* SettingsView.storyboard */; };
 		5497AE2A273E301C00E37A6C /* PurchasesView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5497AE29273E301C00E37A6C /* PurchasesView.storyboard */; };
 		5497AE2C273E38D500E37A6C /* DetailProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497AE2B273E38D500E37A6C /* DetailProductViewController.swift */; };
+		54A5A0732762ACBA00B0F2C0 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A5A0722762ACBA00B0F2C0 /* StateController.swift */; };
 		54BCDDFF2749DB39005E78BB /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BCDDFD2749DB39005E78BB /* DetailTableViewCell.swift */; };
 		54BCDE002749DB39005E78BB /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54BCDDFE2749DB39005E78BB /* DetailTableViewCell.xib */; };
 		54BF8A3A2749964300388AB4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BF8A392749964300388AB4 /* HomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		542C21D32745835500F7CF3B /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
+		540F087D2762C15D00D893AF /* StateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTableViewCell.swift; sourceTree = "<group>"; };
+		540F087E2762C15D00D893AF /* StateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StateTableViewCell.xib; sourceTree = "<group>"; };
+		542C21D32745835500F7CF3B /* StateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateViewController.swift; sourceTree = "<group>"; };
 		542C21DA2746906100F7CF3B /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		542C21E02746928F00F7CF3B /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		542C222927469A3200F7CF3B /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
@@ -45,6 +50,7 @@
 		5497AE23273E2E7A00E37A6C /* SettingsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsView.storyboard; sourceTree = "<group>"; };
 		5497AE29273E301C00E37A6C /* PurchasesView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PurchasesView.storyboard; sourceTree = "<group>"; };
 		5497AE2B273E38D500E37A6C /* DetailProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductViewController.swift; sourceTree = "<group>"; };
+		54A5A0722762ACBA00B0F2C0 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		54BCDDFD2749DB39005E78BB /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		54BCDDFE2749DB39005E78BB /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		54BF8A392749964300388AB4 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -64,7 +70,7 @@
 		542C21D52745888F00F7CF3B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				542C21D32745835500F7CF3B /* StateController.swift */,
+				54A5A0722762ACBA00B0F2C0 /* StateController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -178,7 +184,10 @@
 		5497AE26273E2E9A00E37A6C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				542C21D32745835500F7CF3B /* StateViewController.swift */,
 				5497AE23273E2E7A00E37A6C /* SettingsView.storyboard */,
+				540F087D2762C15D00D893AF /* StateTableViewCell.swift */,
+				540F087E2762C15D00D893AF /* StateTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +269,7 @@
 				5497AE14273DFD4C00E37A6C /* LaunchScreen.storyboard in Resources */,
 				5497AE2A273E301C00E37A6C /* PurchasesView.storyboard in Resources */,
 				5497AE11273DFD4C00E37A6C /* Assets.xcassets in Resources */,
+				540F08802762C15D00D893AF /* StateTableViewCell.xib in Resources */,
 				5497AE0F273DFD4A00E37A6C /* Main.storyboard in Resources */,
 				5497AE1E273E254B00E37A6C /* HomeView.storyboard in Resources */,
 				54BCDE002749DB39005E78BB /* DetailTableViewCell.xib in Resources */,
@@ -275,14 +285,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5497AE0C273DFD4A00E37A6C /* HomeViewController.swift in Sources */,
+				54A5A0732762ACBA00B0F2C0 /* StateController.swift in Sources */,
 				5497AE08273DFD4A00E37A6C /* AppDelegate.swift in Sources */,
 				542C21DB2746906100F7CF3B /* Context.swift in Sources */,
+				540F087F2762C15D00D893AF /* StateTableViewCell.swift in Sources */,
 				5497AE2C273E38D500E37A6C /* DetailProductViewController.swift in Sources */,
 				54BF8A3A2749964300388AB4 /* HomeController.swift in Sources */,
 				542C222A27469A3200F7CF3B /* Purchase.swift in Sources */,
 				542C222D2746E2C900F7CF3B /* State.swift in Sources */,
 				5497AE0A273DFD4A00E37A6C /* SceneDelegate.swift in Sources */,
-				542C21D42745835500F7CF3B /* StateController.swift in Sources */,
+				542C21D42745835500F7CF3B /* StateViewController.swift in Sources */,
 				542C21E12746928F00F7CF3B /* FilipeJessicaCarol.xcdatamodeld in Sources */,
 				54BCDDFF2749DB39005E78BB /* DetailTableViewCell.swift in Sources */,
 			);
@@ -436,7 +448,9 @@
 				DEVELOPMENT_TEAM = N25Y66HM7B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilipeJessicaCarol/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Compras USA";
+				INFOPLIST_KEY_CFBundleDisplayName = ComprasUSA;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Vamos tirar uma foto?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Vamos escolher uma foto?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -466,7 +480,9 @@
 				DEVELOPMENT_TEAM = N25Y66HM7B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilipeJessicaCarol/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Compras USA";
+				INFOPLIST_KEY_CFBundleDisplayName = ComprasUSA;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Vamos tirar uma foto?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Vamos escolher uma foto?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

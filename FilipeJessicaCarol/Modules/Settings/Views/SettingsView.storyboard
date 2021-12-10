@@ -10,12 +10,12 @@
         <!--Ajustes-->
         <scene sceneID="WhJ-WF-Wlw">
             <objects>
-                <tableViewController id="fBB-ON-Cd6" customClass="StateController" customModule="FilipeJessicaCarol" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="fBB-ON-Cd6" customClass="StateViewController" customModule="FilipeJessicaCarol" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="29P-yi-CG2" userLabel="SettingsCells">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="lvG-YT-DHH">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="lvG-YT-DHH">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -81,6 +81,25 @@
                                 <constraint firstAttribute="trailing" secondItem="6MZ-jK-fTH" secondAttribute="trailing" constant="16" id="rQr-pZ-1Oc"/>
                             </constraints>
                         </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="vc6-tY-mNP">
+                            <rect key="frame" x="0.0" y="180" width="414" height="76"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FK6-fB-SM3">
+                                    <rect key="frame" x="265" y="37" width="133" height="31"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Adicionar estado"/>
+                                    <connections>
+                                        <action selector="clickOnAddState:" destination="fBB-ON-Cd6" eventType="touchUpInside" id="EHp-Mr-SaX"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="FK6-fB-SM3" secondAttribute="trailing" constant="16" id="X0F-Bd-KWh"/>
+                                <constraint firstAttribute="bottom" secondItem="FK6-fB-SM3" secondAttribute="bottom" constant="8" id="hez-nj-96I"/>
+                            </constraints>
+                        </view>
                         <connections>
                             <outlet property="dataSource" destination="fBB-ON-Cd6" id="VaF-yc-rDW"/>
                             <outlet property="delegate" destination="fBB-ON-Cd6" id="JlE-Fb-Uqs"/>
@@ -89,6 +108,9 @@
                     <tabBarItem key="tabBarItem" title="Ajustes" image="gearshape.2.fill" catalog="system" id="YZj-jJ-0ws"/>
                     <navigationItem key="navigationItem" id="j3H-Va-FkQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addStateButton" destination="FK6-fB-SM3" id="XuK-tT-wlD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUF-c7-C5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

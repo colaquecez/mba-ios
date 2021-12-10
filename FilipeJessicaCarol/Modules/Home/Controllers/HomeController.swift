@@ -69,6 +69,7 @@ class HomeController: NSObject {
             objectUpdate.setValue(purchase.value, forKey: "value")
             objectUpdate.setValue(purchase.state, forKey: "state")
             objectUpdate.setValue(purchase.image, forKey: "image")
+            objectUpdate.setValue(purchase.isCard, forKey: "isCard")
             
             try managedContext.save()
 
@@ -88,6 +89,7 @@ class HomeController: NSObject {
         newPurchase.setValue(purchase.state, forKey: "state")
         newPurchase.setValue(purchase.sku, forKey: "sku")
         newPurchase.setValue(jpegImageData, forKey: "image")
+        newPurchase.setValue(purchase.isCard, forKey: "isCard")
         
         do {
             try managedContext.save()
