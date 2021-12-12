@@ -7,8 +7,9 @@
 import UIKit
 import PhotosUI
 
-class DetailProductViewController: UIViewController {
+class DetailProductViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var pickerView: UIPickerView!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameProduct: UITextField!
@@ -27,22 +28,64 @@ class DetailProductViewController: UIViewController {
     var imageShowCase: String?
     var selectedProduct: Purchase?
     let homeController = HomeController()
+    let stateController = StateController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.pickerView.dataSource = self
+        self.pickerView.delegate = self
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             cameraAvailable = true
         }
+        stateController.loadingStates()
         imageView.isUserInteractionEnabled = true
         nameProductLabel.isHidden = true
+        pickerView.isHidden = true
         stateProductLabel.isHidden = true
         valueProductLabel.isHidden = true
+        stateProduct.delegate = self
+        nameProduct.delegate = self
+        valueProduct.delegate = self
         imageLabel.isHidden = true
         switchCard.addTarget(self, action: #selector(didTapCard), for: UIControl.Event.valueChanged)
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
         checkSelectedProduct()
     }
     
+    override func viewDidLayoutSubviews() {
+        stateController.loadingStates()
+        pickerView.reloadAllComponents()
+    }
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if textField == stateProduct {
+            stateController.loadingStates()
+            return pickerView.isHidden = false
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        return pickerView.isHidden = true
+        
+        
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == stateProduct {
+            pickerView.isHidden = !pickerView.isHidden
+            return false
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     @objc func didTapCard(mySwitch: UISwitch) {
         let value = mySwitch.isOn
@@ -83,13 +126,14 @@ class DetailProductViewController: UIViewController {
             }
             
             let purchase = Purchase(name: nameProduct.text ?? "", state: stateProduct.text ?? "", value: Float(valueProduct.text ?? "0")!, isCard: switchCard.isOn, sku: UUID().uuidString, image: imageView.image!.jpegData(compressionQuality: 1.0)!)
-                homeController.saveOnCoreData(purchase: purchase)
-                navigationController?.popViewController(animated: true)
+            homeController.saveOnCoreData(purchase: purchase)
+            navigationController?.popViewController(animated: true)
             
         }
     }
     
     @IBAction func onPressPlusButton(_ sender: Any) {
+        pickerView.isHidden = true
         performSegue(withIdentifier: "SettingScreen", sender: self)
     }
     
@@ -200,6 +244,25 @@ extension DetailProductViewController: UIImagePickerControllerDelegate, UINaviga
             imageView.image = image
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension DetailProductViewController: UIPickerViewDataSource,UIPickerViewDelegate
+{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return stateController.numberOfRowsInSection()
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return stateController.getStateByRow(row: row)
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        stateProduct.text = stateController.getStateByRow(row: row)
+        return pickerView.isHidden = true
     }
     
 }

@@ -21,6 +21,10 @@ class StateController: NSObject {
         return states[indexPath.row]
     }
     
+    func getStateByRow(row: Int) -> String {
+        return states[row].name
+    }
+    
     func loadingStates() {
         let managedContext = context
         states = []
