@@ -12,23 +12,43 @@ class StateViewController: UITableViewController {
     @IBOutlet weak var addStateButton: UIButton!
     private let stateControler = StateController()
     
+    @IBOutlet weak var labelIOF: UILabel!
+    @IBOutlet weak var labelDolar: UILabel!
+    @IBOutlet weak var iofInput: UITextField!
+    @IBOutlet weak var dolarInput: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "StateTableViewCell", bundle: nil), forCellReuseIdentifier: "StateTable")
+        labelIOF.isHidden = true
+        labelDolar.isHidden = true
+        populateTextFields()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         stateControler.loadingStates()
         tableView.reloadData()
+        
     }
     
+    
+    func populateTextFields() {
+        if let iofSettings = UserDefaults.standard.string(forKey: "preferences_iof") {
+            iofInput.text = iofSettings
+        }
+        
+        if let dolarSettings = UserDefaults.standard.string(forKey: "preferences_dolar")  {
+            dolarInput.text = dolarSettings
+        }
+    }
     
     @IBAction func clickOnAddState(_ sender: Any) {
         showModalInputState(stateToChange: nil)
     }
     
     func showModalInputState(stateToChange:States?) {
-            
+        
         let alertController = UIAlertController(title: "Adicionar Estado", message: nil, preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Add", style: .default) { [self] (_) in
@@ -43,7 +63,7 @@ class StateViewController: UITableViewController {
                     if let stateToChange = stateToChange {
                         stateControler.changeStateById(id: stateToChange.id, state: newState)
                         
-                      return  tableView.reloadData()
+                        return  tableView.reloadData()
                     }
                     
                     stateControler.saveOnCoreData(state: newState)
@@ -79,7 +99,7 @@ class StateViewController: UITableViewController {
             
             stateControler.deleteStateById(id: state.id)
             tableView.reloadData()
-         
+            
         }
     }
     
@@ -89,7 +109,7 @@ class StateViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+        
         let stateSelected = stateControler.getStateByIndex(indexPath: indexPath)
         showModalInputState(stateToChange: stateSelected)
         

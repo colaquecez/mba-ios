@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		540ABCA327665E20003AD700 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 540ABCA227665E1F003AD700 /* Settings.bundle */; };
 		540F087F2762C15D00D893AF /* StateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F087D2762C15D00D893AF /* StateTableViewCell.swift */; };
 		540F08802762C15D00D893AF /* StateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540F087E2762C15D00D893AF /* StateTableViewCell.xib */; };
 		542C21D42745835500F7CF3B /* StateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542C21D32745835500F7CF3B /* StateViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		540ABCA227665E1F003AD700 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		540F087D2762C15D00D893AF /* StateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTableViewCell.swift; sourceTree = "<group>"; };
 		540F087E2762C15D00D893AF /* StateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StateTableViewCell.xib; sourceTree = "<group>"; };
 		542C21D32745835500F7CF3B /* StateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		540ABCA427666601003AD700 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		542C21D52745888F00F7CF3B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +127,8 @@
 		5497AE06273DFD4A00E37A6C /* FilipeJessicaCarol */ = {
 			isa = PBXGroup;
 			children = (
+				540ABCA427666601003AD700 /* Helpers */,
+				540ABCA227665E1F003AD700 /* Settings.bundle */,
 				542C21D92746904B00F7CF3B /* Extensions */,
 				5497AE1F273E270300E37A6C /* Modules */,
 				5497AE07273DFD4A00E37A6C /* AppDelegate.swift */,
@@ -273,6 +284,7 @@
 				5497AE0F273DFD4A00E37A6C /* Main.storyboard in Resources */,
 				5497AE1E273E254B00E37A6C /* HomeView.storyboard in Resources */,
 				54BCDE002749DB39005E78BB /* DetailTableViewCell.xib in Resources */,
+				540ABCA327665E20003AD700 /* Settings.bundle in Resources */,
 				5497AE24273E2E7A00E37A6C /* SettingsView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

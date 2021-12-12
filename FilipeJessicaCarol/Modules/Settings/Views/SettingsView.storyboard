@@ -110,6 +110,10 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addStateButton" destination="FK6-fB-SM3" id="XuK-tT-wlD"/>
+                        <outlet property="dolarInput" destination="6MZ-jK-fTH" id="fUZ-2c-FGJ"/>
+                        <outlet property="iofInput" destination="bcy-OX-E3z" id="JjF-Jm-qSQ"/>
+                        <outlet property="labelDolar" destination="wHd-Le-mtQ" id="GcD-Bv-8sI"/>
+                        <outlet property="labelIOF" destination="t6i-Yd-aN3" id="Sov-VY-6Jx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUF-c7-C5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
