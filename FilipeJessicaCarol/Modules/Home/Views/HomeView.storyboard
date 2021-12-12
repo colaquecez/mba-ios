@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail Product View Controller-->
+        <!--Cadastrar Produto-->
         <scene sceneID="Xiy-MG-JxQ">
             <objects>
                 <viewController storyboardIdentifier="ProductDetailStoryboard" id="2nQ-9r-3Ny" customClass="DetailProductViewController" customModule="FilipeJessicaCarol" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,7 +69,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a0Y-Cc-p3s">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="-6" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a0Y-Cc-p3s">
                                 <rect key="frame" x="16" y="167" width="382" height="200"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <constraints>
@@ -126,6 +126,10 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0L-Lj-pfX">
                                 <rect key="frame" x="1" y="570" width="414" height="242"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="uye-Oc-DA8"/>
+                                    <constraint firstAttribute="height" constant="242" id="xl9-9p-1HC"/>
+                                </constraints>
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1fO-jX-s2o"/>
@@ -174,7 +178,7 @@
                             <constraint firstItem="a0Y-Cc-p3s" firstAttribute="leading" secondItem="1fO-jX-s2o" secondAttribute="leading" constant="16" id="zU6-FV-NLf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lKX-Vq-xhP"/>
+                    <navigationItem key="navigationItem" title="Cadastrar Produto" id="lKX-Vq-xhP"/>
                     <connections>
                         <outlet property="ImageView" destination="a0Y-Cc-p3s" id="WVn-kq-SFN"/>
                         <outlet property="btRegister" destination="8F2-7j-ZWr" id="RmC-r7-gkj"/>
@@ -213,13 +217,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sua lista está vazia!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PEX-6x-MKw">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="sAU-Zs-6TZ" id="rsT-k2-6yU"/>
@@ -230,7 +227,6 @@
                     <navigationItem key="navigationItem" id="Ar4-lC-g9e"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="emptyList" destination="PEX-6x-MKw" id="6Oc-jm-a9T"/>
                         <segue destination="2nQ-9r-3Ny" kind="show" identifier="ProductDetail" id="WNA-El-hz8"/>
                     </connections>
                 </tableViewController>

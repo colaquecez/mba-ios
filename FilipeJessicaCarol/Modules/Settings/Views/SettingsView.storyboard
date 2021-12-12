@@ -82,22 +82,30 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="vc6-tY-mNP">
-                            <rect key="frame" x="0.0" y="180" width="414" height="76"/>
+                            <rect key="frame" x="0.0" y="180" width="414" height="91"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FK6-fB-SM3">
-                                    <rect key="frame" x="265" y="37" width="133" height="31"/>
+                                    <rect key="frame" x="265" y="59" width="133" height="31"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Adicionar estado"/>
                                     <connections>
                                         <action selector="clickOnAddState:" destination="fBB-ON-Cd6" eventType="touchUpInside" id="EHp-Mr-SaX"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lista de estados vazia." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZf-t1-VoT">
+                                    <rect key="frame" x="120.5" y="35" width="173" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="FK6-fB-SM3" secondAttribute="trailing" constant="16" id="X0F-Bd-KWh"/>
-                                <constraint firstAttribute="bottom" secondItem="FK6-fB-SM3" secondAttribute="bottom" constant="8" id="hez-nj-96I"/>
+                                <constraint firstItem="gZf-t1-VoT" firstAttribute="centerY" secondItem="vc6-tY-mNP" secondAttribute="centerY" id="raA-kc-3cD"/>
+                                <constraint firstAttribute="trailing" secondItem="FK6-fB-SM3" secondAttribute="trailing" constant="16" id="sO6-rU-Bkf"/>
+                                <constraint firstAttribute="bottom" secondItem="FK6-fB-SM3" secondAttribute="bottom" constant="1" id="vbC-ju-K2g"/>
+                                <constraint firstItem="gZf-t1-VoT" firstAttribute="centerX" secondItem="vc6-tY-mNP" secondAttribute="centerX" id="xzk-qe-wvS"/>
                             </constraints>
                         </view>
                         <connections>
@@ -106,14 +114,16 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Ajustes" image="gearshape.2.fill" catalog="system" id="YZj-jJ-0ws"/>
-                    <navigationItem key="navigationItem" id="j3H-Va-FkQ"/>
+                    <navigationItem key="navigationItem" id="jOO-bl-hwn"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addStateButton" destination="FK6-fB-SM3" id="XuK-tT-wlD"/>
                         <outlet property="dolarInput" destination="6MZ-jK-fTH" id="fUZ-2c-FGJ"/>
+                        <outlet property="emptyText" destination="gZf-t1-VoT" id="tpA-XP-FuQ"/>
                         <outlet property="iofInput" destination="bcy-OX-E3z" id="JjF-Jm-qSQ"/>
                         <outlet property="labelDolar" destination="wHd-Le-mtQ" id="GcD-Bv-8sI"/>
                         <outlet property="labelIOF" destination="t6i-Yd-aN3" id="Sov-VY-6Jx"/>
+                        <outlet property="viewContainer" destination="vc6-tY-mNP" id="fbx-qd-uVx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUF-c7-C5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

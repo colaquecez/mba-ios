@@ -12,28 +12,35 @@ class StateViewController: UITableViewController {
     @IBOutlet weak var addStateButton: UIButton!
     private let stateControler = StateController()
     
+    @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var labelIOF: UILabel!
     @IBOutlet weak var labelDolar: UILabel!
     @IBOutlet weak var iofInput: UITextField!
     @IBOutlet weak var dolarInput: UITextField!
+    @IBOutlet weak var emptyText: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        stateControler.loadingStates()
         tableView.register(UINib(nibName: "StateTableViewCell", bundle: nil), forCellReuseIdentifier: "StateTable")
         labelIOF.isHidden = true
         labelDolar.isHidden = true
+        emptyText.isHidden = true
         populateTextFields()
+        viewContainer.frame.size.height = UIScreen.main.bounds.height / 3
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        stateControler.loadingStates()
         tableView.reloadData()
-        
     }
     
-    
     func populateTextFields() {
+        
+        if stateControler.numberOfRowsInSection() == 0 {
+            emptyText.isHidden = false
+        }
+    
         if let iofSettings = UserDefaults.standard.string(forKey: "preferences_iof") {
             iofInput.text = iofSettings
         }
@@ -67,6 +74,7 @@ class StateViewController: UITableViewController {
                     }
                     
                     stateControler.saveOnCoreData(state: newState)
+                    emptyText.isHidden = true
                     tableView.reloadData()
                 }
                 
@@ -96,8 +104,12 @@ class StateViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let state = stateControler.getStateByIndex(indexPath: indexPath)
-            
+                      
             stateControler.deleteStateById(id: state.id)
+            
+            if stateControler.numberOfRowsInSection() <= 0 {
+                emptyText.isHidden = false
+            }
             tableView.reloadData()
             
         }
@@ -113,15 +125,13 @@ class StateViewController: UITableViewController {
         let stateSelected = stateControler.getStateByIndex(indexPath: indexPath)
         showModalInputState(stateToChange: stateSelected)
         
-        print("entrou")
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StateTable", for: indexPath) as! StateTableViewCell
         
         let state = stateControler.getStateByIndex(indexPath: indexPath)
-        //
+        
         cell.setupState(state: state)
         
         return cell

@@ -60,7 +60,6 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
         if textField == stateProduct {
             stateController.loadingStates()
             return pickerView.isHidden = false
@@ -71,11 +70,15 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
         
         return pickerView.isHidden = true
         
-        
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == stateProduct {
+            if stateController.numberOfRowsInSection() <= 0 {
+              onPressPlusButton(self)
+                pickerView.isHidden = true
+                return false
+            }
             pickerView.isHidden = !pickerView.isHidden
             return false
         }

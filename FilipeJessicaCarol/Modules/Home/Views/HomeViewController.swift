@@ -18,14 +18,13 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func onClickButton(_sender: Any) {
-       performSegue(withIdentifier: "ProductDetail", sender: self)
+        performSegue(withIdentifier: "ProductDetail", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Lista de Compras"
         configureItems()
-        emptyList.isHidden = true
         tableView.register(UINib(nibName: "DetailTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailCell")
         registerDefaultsFromSettingsBundle()
     }
@@ -57,7 +56,7 @@ class HomeViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-       
+        
         if editingStyle == .delete {
             let purchase = homeController.getProductByIndex(indexPath: indexPath)
             homeController.deletePurchaseById(sku: purchase.sku)
@@ -66,7 +65,13 @@ class HomeViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        emptyList.isHidden = !homeController.purchaseIsEmpty
+        
+        if homeController.numberOfRowsInSection() == 0 {
+            tableView.setEmptyView(title: "Você não possui nenhuma compra.", message: "Suas compras irão aparecer aqui.")
+        } else {
+            tableView.restore()
+        }
+        
         return homeController.numberOfRowsInSection()
     }
     
@@ -74,21 +79,18 @@ class HomeViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailTableViewCell
         let product = homeController.getProductByIndex(indexPath: indexPath)
         cell.setupProduct(purchase: product)
-          return cell
-      }
+        return cell
+    }
     
-      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          
-          guard let vc = storyboard?.instantiateViewController(withIdentifier: "ProductDetailStoryboard") as? DetailProductViewController else {
-              return
-          }
-          
-          let product = homeController.getProductByIndex(indexPath: indexPath)
-          vc.selectedProduct = product
-          navigationController?.pushViewController(vc, animated: true)
-      }
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ProductDetailStoryboard") as? DetailProductViewController else {
+            return
+        }
+        
+        let product = homeController.getProductByIndex(indexPath: indexPath)
+        vc.selectedProduct = product
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
-
-
-
