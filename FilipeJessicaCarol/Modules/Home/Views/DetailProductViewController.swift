@@ -26,7 +26,7 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
     
     var cameraAvailable: Bool = false
     var imageShowCase: String?
-    var selectedProduct: Purchase?
+    var selectedProduct: Product?
     let homeController = HomeController()
     let stateController = StateController()
     
@@ -75,7 +75,7 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == stateProduct {
             if stateController.numberOfRowsInSection() <= 0 {
-              onPressPlusButton(self)
+                onPressPlusButton(self)
                 pickerView.isHidden = true
                 return false
             }
@@ -102,9 +102,9 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
         
         btRegister.setTitle("Editar", for: .normal)
         nameProduct.text = selectedProduct.name
-        stateProduct.text = selectedProduct.state
+        stateProduct.text = selectedProduct.states?.name
         valueProduct.text = String(selectedProduct.value)
-        imageView.image = UIImage(data: selectedProduct.image)
+        imageView.image = UIImage(data: selectedProduct.image ?? Data())
         labelAddImage.isHidden = true
         switchCard.isOn = selectedProduct.isCard
         
@@ -119,16 +119,17 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
                 
                 selectedProduct.name = nameProduct.text!
                 selectedProduct.value = Float(valueProduct.text!)!
-                selectedProduct.state = stateProduct.text!
+                selectedProduct.states?.name = stateProduct.text
                 selectedProduct.image = imageView.image!.jpegData(compressionQuality: 1.0)!
                 selectedProduct.isCard = switchCard.isOn
                 
-                homeController.changePurchaseById(sku: selectedProduct.sku, purchase: selectedProduct)
+                homeController.changePurchaseById(sku: selectedProduct.objectID, purchase: selectedProduct)
                 navigationController?.popViewController(animated: true)
                 return
             }
             
             let purchase = Purchase(name: nameProduct.text ?? "", state: stateProduct.text ?? "", value: Float(valueProduct.text ?? "0")!, isCard: switchCard.isOn, sku: UUID().uuidString, image: imageView.image!.jpegData(compressionQuality: 1.0)!)
+            
             homeController.saveOnCoreData(purchase: purchase)
             navigationController?.popViewController(animated: true)
             

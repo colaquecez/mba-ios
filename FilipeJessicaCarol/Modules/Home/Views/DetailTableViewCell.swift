@@ -16,10 +16,12 @@ class DetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setupProduct(purchase: Purchase) {
+    func setupProduct(purchase: Product) {
         title.text = purchase.name
         price.text = String(purchase.value)
-        showCase.image = UIImage(data: purchase.image)
+        if let image = purchase.image {
+            showCase.image = UIImage(data: image)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

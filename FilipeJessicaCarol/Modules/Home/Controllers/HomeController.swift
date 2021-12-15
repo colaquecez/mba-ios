@@ -10,7 +10,7 @@ import CoreData
 
 class HomeController: NSObject {
     
-    private var purchases: [Purchase] = []
+    private var purchases: [Product] = []
     
     var purchaseIsEmpty: Bool {
         return purchases.isEmpty
@@ -23,20 +23,10 @@ class HomeController: NSObject {
         let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "Product")
         
         do {
-            let result = try managedContext.fetch(fetchReq)
-            for data in result as! [NSManagedObject] {
-                let name = data.value(forKey: "name") as? String ?? ""
-//                let state = data.value(forKey: "state") as? String ?? ""
-                let value = data.value(forKey: "value") as? Float ?? 0
-                let isCard = data.value(forKey: "isCard") as? Bool ?? false
-                let sku = data.value(forKey: "sku") as? String ?? ""
-                let image = data.value(forKey: "image") as? Data ?? Data()
-                
-                let newPurchases = Purchase(name: name, value: value, isCard: isCard, sku: sku, image: image)
-                
-                purchases.append(newPurchases)
-            }
-        }catch {
+            let result = try managedContext.fetch(fetchReq) as? [Product] ?? []
+            
+            purchases = result
+        } catch {
             print("error")
         }
     }
@@ -46,33 +36,33 @@ class HomeController: NSObject {
     }
     
     func getName(indexPath: IndexPath) -> String {
-        return purchases[indexPath.row].name
+        return purchases[indexPath.row].name ?? ""
     }
     
-    func getProductByIndex(indexPath: IndexPath) -> Purchase {
+    func getProductByIndex(indexPath: IndexPath) -> Product {
         return purchases[indexPath.row]
     }
     
-    func changePurchaseById(sku: String, purchase: Purchase) {
+    func changePurchaseById(sku: NSManagedObjectID, purchase: Product) {
         let managedContext = context
         let newEntity = NSEntityDescription.entity(forEntityName: "Product", in: managedContext)!
         let request = NSFetchRequest<NSFetchRequestResult>()
         request.entity = newEntity
         let predicate = NSPredicate(format: "(sku = %@)", sku)
         request.predicate = predicate
-
+        
         do {
-            let results =
-            try managedContext.fetch(request)
-            let objectUpdate = results[0] as! NSManagedObject
-            objectUpdate.setValue(purchase.name, forKey: "name")
-            objectUpdate.setValue(purchase.value, forKey: "value")
-            objectUpdate.setValue(purchase.state, forKey: "state")
-            objectUpdate.setValue(purchase.image, forKey: "image")
-            objectUpdate.setValue(purchase.isCard, forKey: "isCard")
-
+//            let results =
+//            try managedContext.fetch(request)
+//            let objectUpdate = results[0] as! NSManagedObject
+//            objectUpdate.setValue(purchase.name, forKey: "name")
+//            objectUpdate.setValue(purchase.value, forKey: "value")
+//            objectUpdate.setValue(purchase.state, forKey: "state")
+//            objectUpdate.setValue(purchase.image, forKey: "image")
+//            objectUpdate.setValue(purchase.isCard, forKey: "isCard")
+            
             try managedContext.save()
-
+            
         } catch {
             print("error")
         }
@@ -100,23 +90,15 @@ class HomeController: NSObject {
         }
     }
     
-    func deletePurchaseById(sku: String) {
+    func deletePurchaseById(sku: NSManagedObjectID) {
         let managedContext = context
-        let newEntity = NSEntityDescription.entity(forEntityName: "Product", in: managedContext)!
-        let request = NSFetchRequest<NSFetchRequestResult>()
-        request.entity = newEntity
-        let predicate = NSPredicate(format: "(sku = %@)", sku)
-        request.predicate = predicate
+        let object = managedContext.object(with: sku)
+        managedContext.delete(object)
         
         do {
-            let results =
-            try managedContext.fetch(request)
-            let objectToDelete = results[0] as! NSManagedObject
+            try managedContext.save()
+            loadingPurchases()
             
-           managedContext.delete(objectToDelete)
-           try managedContext.save()
-           loadingPurchases()
-                       
         } catch {
             print("error")
         }

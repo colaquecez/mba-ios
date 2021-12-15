@@ -59,8 +59,9 @@ class HomeViewController: UITableViewController {
         
         if editingStyle == .delete {
             let purchase = homeController.getProductByIndex(indexPath: indexPath)
-            homeController.deletePurchaseById(sku: purchase.sku)
+            homeController.deletePurchaseById(sku: purchase.objectID)
             tableView.reloadData()
+            //criar complition
         }
     }
     

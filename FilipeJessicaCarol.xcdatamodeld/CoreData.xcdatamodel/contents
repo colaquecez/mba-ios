@@ -3,18 +3,19 @@
     <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="isCard" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
         <attribute name="sku" optional="YES" attributeType="String"/>
-        <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="states" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="State" inverseName="products" inverseEntity="State"/>
     </entity>
     <entity name="State" representedClassName="State" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="taxes" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="products" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Product" inverseName="states" inverseEntity="Product"/>
     </entity>
     <elements>
-        <element name="Product" positionX="-45" positionY="0" width="128" height="119"/>
-        <element name="State" positionX="-18" positionY="45" width="128" height="74"/>
+        <element name="Product" positionX="-277.406494140625" positionY="2.08966064453125" width="143.1824951171875" height="119"/>
+        <element name="State" positionX="-27.14654541015625" positionY="53.1302490234375" width="143.8207397460938" height="89"/>
     </elements>
 </model>
