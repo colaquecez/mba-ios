@@ -16,7 +16,7 @@ class Purchase: Identifiable, ObservableObject {
     @Published var sku: String
     @Published var image: Data
     
-    init(name:String, state: String, value: Float, isCard: Bool, sku: String, image: Data) {
+    init(name:String, state: String = "valor", value: Float, isCard: Bool, sku: String, image: Data) {
         self.name = name
         self.state = state
         self.value = value

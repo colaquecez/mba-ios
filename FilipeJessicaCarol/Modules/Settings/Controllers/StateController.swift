@@ -36,7 +36,7 @@ class StateController: NSObject {
             for data in result as! [NSManagedObject] {
                 let name = data.value(forKey: "name") as? String ?? ""
                 let taxes = data.value(forKey: "taxes") as? Float ?? 0
-                let id = data.value(forKey: "id") as! String
+                let id = data.value(forKey: "id") as? String ?? ""
                 let newState = States(name: name, taxes: taxes, id: id)
                 
                 states.append(newState)

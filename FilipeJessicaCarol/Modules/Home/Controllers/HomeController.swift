@@ -11,7 +11,7 @@ import CoreData
 class HomeController: NSObject {
     
     private var purchases: [Purchase] = []
-   
+    
     var purchaseIsEmpty: Bool {
         return purchases.isEmpty
     }
@@ -26,13 +26,13 @@ class HomeController: NSObject {
             let result = try managedContext.fetch(fetchReq)
             for data in result as! [NSManagedObject] {
                 let name = data.value(forKey: "name") as? String ?? ""
-                let state = data.value(forKey: "state") as? String ?? ""
+//                let state = data.value(forKey: "state") as? String ?? ""
                 let value = data.value(forKey: "value") as? Float ?? 0
                 let isCard = data.value(forKey: "isCard") as? Bool ?? false
                 let sku = data.value(forKey: "sku") as? String ?? ""
-                let image = data.value(forKey: "image") as! Data
+                let image = data.value(forKey: "image") as? Data ?? Data()
                 
-                let newPurchases = Purchase(name: name, state: state, value: value, isCard: isCard, sku: sku, image: image)
+                let newPurchases = Purchase(name: name, value: value, isCard: isCard, sku: sku, image: image)
                 
                 purchases.append(newPurchases)
             }
@@ -70,7 +70,7 @@ class HomeController: NSObject {
             objectUpdate.setValue(purchase.state, forKey: "state")
             objectUpdate.setValue(purchase.image, forKey: "image")
             objectUpdate.setValue(purchase.isCard, forKey: "isCard")
-            
+
             try managedContext.save()
 
         } catch {
@@ -80,16 +80,18 @@ class HomeController: NSObject {
     
     func saveOnCoreData(purchase: Purchase) {
         let managedContext = context
-        let newEntity = NSEntityDescription.entity(forEntityName: "Product", in: managedContext)!
-        let newPurchase = NSManagedObject(entity: newEntity, insertInto: managedContext)
-        let jpegImageData = purchase.image
+        let product = Product(context: managedContext)
         
-        newPurchase.setValue(purchase.name, forKey: "name")
-        newPurchase.setValue(purchase.value, forKey: "value")
-        newPurchase.setValue(purchase.state, forKey: "state")
-        newPurchase.setValue(purchase.sku, forKey: "sku")
-        newPurchase.setValue(jpegImageData, forKey: "image")
-        newPurchase.setValue(purchase.isCard, forKey: "isCard")
+        product.name = purchase.name
+        product.value = purchase.value
+        
+        let states = State(context: managedContext)
+        states.name = purchase.state
+        product.states = states
+        
+        product.sku = purchase.sku
+        product.image = purchase.image
+        product.isCard = purchase.isCard
         
         do {
             try managedContext.save()
