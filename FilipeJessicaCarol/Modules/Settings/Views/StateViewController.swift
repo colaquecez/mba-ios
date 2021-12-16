@@ -54,7 +54,7 @@ class StateViewController: UITableViewController {
         showModalInputState(stateToChange: nil)
     }
     
-    func showModalInputState(stateToChange:States?) {
+    func showModalInputState(stateToChange:State?) {
         
         let alertController = UIAlertController(title: "Adicionar Estado", message: nil, preferredStyle: .alert)
         
@@ -68,12 +68,12 @@ class StateViewController: UITableViewController {
                     let newState = States(name: textState, taxes: Float(textTaxes) ?? 0, id: UUID().uuidString)
                     
                     if let stateToChange = stateToChange {
-                        stateControler.changeStateById(id: stateToChange.id, state: newState)
+                        stateControler.changeStateById(id: stateToChange.id ?? "", state: newState)
                         
                         return  tableView.reloadData()
                     }
                     
-                    stateControler.saveOnCoreData(state: newState)
+                    stateControler.saveOnCoreData(states: newState)
                     emptyText.isHidden = true
                     tableView.reloadData()
                 }
@@ -105,7 +105,7 @@ class StateViewController: UITableViewController {
         if editingStyle == .delete {
             let state = stateControler.getStateByIndex(indexPath: indexPath)
                       
-            stateControler.deleteStateById(id: state.id)
+            stateControler.deleteStateById(id: state.id ?? "")
             
             if stateControler.numberOfRowsInSection() <= 0 {
                 emptyText.isHidden = false

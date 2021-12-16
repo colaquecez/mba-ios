@@ -18,7 +18,7 @@ class StateTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func setupState(state: States) {
+    func setupState(state: State) {
         labelTitle.text =  state.name
         labelDescription.text = String(state.taxes)
     }

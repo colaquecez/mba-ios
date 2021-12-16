@@ -52,14 +52,6 @@ class HomeController: NSObject {
         request.predicate = predicate
         
         do {
-//            let results =
-//            try managedContext.fetch(request)
-//            let objectUpdate = results[0] as! NSManagedObject
-//            objectUpdate.setValue(purchase.name, forKey: "name")
-//            objectUpdate.setValue(purchase.value, forKey: "value")
-//            objectUpdate.setValue(purchase.state, forKey: "state")
-//            objectUpdate.setValue(purchase.image, forKey: "image")
-//            objectUpdate.setValue(purchase.isCard, forKey: "isCard")
             
             try managedContext.save()
             

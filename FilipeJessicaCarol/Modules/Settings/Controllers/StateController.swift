@@ -10,46 +10,36 @@ import CoreData
 
 class StateController: NSObject {
 
-    private var states: [States] = []
-    
+    private var states: [State] = []
+    private var stateSelected: Set<State> = []
     
     func numberOfRowsInSection() -> Int {
         return states.count
     }
     
-    func getStateByIndex(indexPath: IndexPath) -> States {
+    func getStateByIndex(indexPath: IndexPath) -> State {
         return states[indexPath.row]
     }
     
     func getStateByRow(row: Int) -> String {
-        return states[row].name
+        return states[row].name ?? ""
     }
     
     func loadingStates() {
-        let managedContext = context
         states = []
         
         let fetchReq = NSFetchRequest<NSFetchRequestResult>(entityName: "State")
         
         do {
-            let result = try managedContext.fetch(fetchReq)
-            for data in result as! [NSManagedObject] {
-                let name = data.value(forKey: "name") as? String ?? ""
-                let taxes = data.value(forKey: "taxes") as? Float ?? 0
-                let id = data.value(forKey: "id") as? String ?? ""
-                let newState = States(name: name, taxes: taxes, id: id)
-                
-                states.append(newState)
-            }
+            let result = try context.fetch(fetchReq) as? [State] ?? []
+            states = result
         }catch {
             print("error")
         }
     }
     
     func deleteStateById(id: String) {
-        let managedContext = context
-       
-        let newEntity = NSEntityDescription.entity(forEntityName: "State", in: managedContext)!
+        let newEntity = NSEntityDescription.entity(forEntityName: "State", in: context)!
         let request = NSFetchRequest<NSFetchRequestResult>()
         request.entity = newEntity
         let predicate = NSPredicate(format: "(id = %@)", id)
@@ -57,11 +47,11 @@ class StateController: NSObject {
 
         do {
             let results =
-            try managedContext.fetch(request)
+            try context.fetch(request)
             let objectToDelete = results[0] as! NSManagedObject
 
-           managedContext.delete(objectToDelete)
-           try managedContext.save()
+           context.delete(objectToDelete)
+           try context.save()
            loadingStates()
 
         } catch {
@@ -93,14 +83,13 @@ class StateController: NSObject {
     }
     
     
-    func saveOnCoreData(state: States) {
+    func saveOnCoreData(states: States) {
         let managedContext = context
-        let newEntity = NSEntityDescription.entity(forEntityName: "State", in: managedContext)!
-        let newState = NSManagedObject(entity: newEntity, insertInto: managedContext)
-   
-        newState.setValue(state.name, forKey: "name")
-        newState.setValue(state.taxes, forKey: "taxes")
-        newState.setValue(state.id, forKey: "id")
+        let state = State(context: managedContext)
+        
+        state.name = states.name
+        state.taxes = states.taxes
+        state.id = states.id
       
         do {
             try managedContext.save()
