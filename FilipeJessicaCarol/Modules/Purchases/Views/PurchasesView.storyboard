@@ -11,24 +11,57 @@
         <!--Total da Compra-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="PurchaseViewController" customModule="FilipeJessicaCarol" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Nome do produto" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uhq-BU-jZO">
-                                <rect key="frame" x="52" y="88" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total em U$:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFi-3t-eB5">
+                                <rect key="frame" x="158.5" y="104" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70x-F5-bUg">
+                                <rect key="frame" x="193" y="133" width="28" height="51"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total em R$:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqu-Ez-eBP">
+                                <rect key="frame" x="159.5" y="268" width="95" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eW2-R1-3bG">
+                                <rect key="frame" x="193" y="297" width="28" height="51"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eW2-R1-3bG" firstAttribute="top" secondItem="Dqu-Ez-eBP" secondAttribute="bottom" constant="8" id="8fr-FR-XdM"/>
+                            <constraint firstItem="eW2-R1-3bG" firstAttribute="top" secondItem="Dqu-Ez-eBP" secondAttribute="bottom" constant="8" id="AFb-eP-XFR"/>
+                            <constraint firstItem="PFi-3t-eB5" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="HjP-K8-U04"/>
+                            <constraint firstItem="Dqu-Ez-eBP" firstAttribute="top" secondItem="70x-F5-bUg" secondAttribute="bottom" constant="84" id="bSy-JG-o6g"/>
+                            <constraint firstItem="eW2-R1-3bG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="hzg-RW-4sg"/>
+                            <constraint firstItem="Dqu-Ez-eBP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kYK-7c-QrI"/>
+                            <constraint firstItem="70x-F5-bUg" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="n6l-Bz-piq"/>
+                            <constraint firstItem="PFi-3t-eB5" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="o7M-M8-1L4"/>
+                            <constraint firstItem="70x-F5-bUg" firstAttribute="top" secondItem="PFi-3t-eB5" secondAttribute="bottom" constant="8" id="qo8-Ad-xmn"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Total da Compra" image="latch.2.case.fill" catalog="system" id="0Mg-Xy-VqM"/>
                     <navigationItem key="navigationItem" id="6g7-he-dVz"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dolarTotalLabel" destination="70x-F5-bUg" id="rmH-zk-E2q"/>
+                        <outlet property="realTotalLabel" destination="eW2-R1-3bG" id="gyG-yX-2WH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,6 +90,12 @@
         <image name="latch.2.case.fill" catalog="system" width="128" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

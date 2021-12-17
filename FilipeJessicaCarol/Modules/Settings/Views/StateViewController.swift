@@ -22,16 +22,20 @@ class StateViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         stateControler.loadingStates()
         tableView.register(UINib(nibName: "StateTableViewCell", bundle: nil), forCellReuseIdentifier: "StateTable")
         labelIOF.isHidden = true
         labelDolar.isHidden = true
+        iofInput.keyboardType = .decimalPad
+        dolarInput.keyboardType = .decimalPad
         emptyText.isHidden = true
         populateTextFields()
         viewContainer.frame.size.height = UIScreen.main.bounds.height / 3
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        stateControler.loadingStates()
         tableView.reloadData()
     }
     
@@ -40,7 +44,7 @@ class StateViewController: UITableViewController {
         if stateControler.numberOfRowsInSection() == 0 {
             emptyText.isHidden = false
         }
-    
+        
         if let iofSettings = UserDefaults.standard.string(forKey: "preferences_iof") {
             iofInput.text = iofSettings
         }
@@ -59,11 +63,11 @@ class StateViewController: UITableViewController {
         let alertController = UIAlertController(title: "Adicionar Estado", message: nil, preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Add", style: .default) { [self] (_) in
+            alertController.textFields?.last?.keyboardType = .decimalPad
+            
             if let stateName = alertController.textFields?.first, let textState = stateName.text {
-                // operations
                 
                 if let taxes = alertController.textFields?.last, let textTaxes = taxes.text {
-                    
                     
                     let newState = States(name: textState, taxes: Float(textTaxes) ?? 0, id: UUID().uuidString)
                     
@@ -73,9 +77,12 @@ class StateViewController: UITableViewController {
                         return  tableView.reloadData()
                     }
                     
-                    stateControler.saveOnCoreData(states: newState)
-                    emptyText.isHidden = true
-                    tableView.reloadData()
+                    stateControler.saveOnCoreData(states: newState) { resp in
+                        emptyText.isHidden = true
+                        DispatchQueue.main.async {
+                            tableView.reloadData()
+                        }
+                    }
                 }
                 
             }
@@ -97,6 +104,7 @@ class StateViewController: UITableViewController {
         
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
+        alertController.textFields?.last?.keyboardType = .decimalPad
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -104,8 +112,8 @@ class StateViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let state = stateControler.getStateByIndex(indexPath: indexPath)
-                      
-            stateControler.deleteStateById(id: state.id ?? "")
+            
+            stateControler.deleteStateById(id: state.objectID)
             
             if stateControler.numberOfRowsInSection() <= 0 {
                 emptyText.isHidden = false

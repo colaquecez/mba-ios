@@ -27,11 +27,14 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
     var cameraAvailable: Bool = false
     var imageShowCase: String?
     var selectedProduct: Product?
+    var selectedState: State?
     let homeController = HomeController()
     let stateController = StateController()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         self.pickerView.dataSource = self
         self.pickerView.delegate = self
         
@@ -44,6 +47,7 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
         pickerView.isHidden = true
         stateProductLabel.isHidden = true
         valueProductLabel.isHidden = true
+        valueProduct.keyboardType = .decimalPad
         stateProduct.delegate = self
         nameProduct.delegate = self
         valueProduct.delegate = self
@@ -57,7 +61,6 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
         stateController.loadingStates()
         pickerView.reloadAllComponents()
     }
-    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == stateProduct {
@@ -128,7 +131,7 @@ class DetailProductViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            let purchase = Purchase(name: nameProduct.text ?? "", state: stateProduct.text ?? "", value: Float(valueProduct.text ?? "0")!, isCard: switchCard.isOn, sku: UUID().uuidString, image: imageView.image!.jpegData(compressionQuality: 1.0)!)
+            let purchase = Purchase(name: nameProduct.text ?? "", state: selectedState ?? State(), value: Float(valueProduct.text ?? "0")!, isCard: switchCard.isOn, sku: UUID().uuidString, image: imageView.image!.jpegData(compressionQuality: 1.0)!)
             
             homeController.saveOnCoreData(purchase: purchase)
             navigationController?.popViewController(animated: true)
@@ -266,6 +269,7 @@ extension DetailProductViewController: UIPickerViewDataSource,UIPickerViewDelega
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         stateProduct.text = stateController.getStateByRow(row: row)
+        selectedState = stateController.getStateByRow(row: row)
         return pickerView.isHidden = true
     }
     

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5401ABDF276BF7450010F958 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401ABDE276BF7450010F958 /* KeyboardDismiss.swift */; };
+		5401ABE1276C18980010F958 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401ABE0276C18980010F958 /* PurchaseViewController.swift */; };
+		5401ABE4276C19200010F958 /* PurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401ABE3276C19200010F958 /* PurchaseController.swift */; };
 		540ABCA327665E20003AD700 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 540ABCA227665E1F003AD700 /* Settings.bundle */; };
 		540ABCA82766A121003AD700 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540ABCA72766A121003AD700 /* EmptyTableView.swift */; };
 		540F087F2762C15D00D893AF /* StateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F087D2762C15D00D893AF /* StateTableViewCell.swift */; };
@@ -33,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5401ABDE276BF7450010F958 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
+		5401ABE0276C18980010F958 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		5401ABE3276C19200010F958 /* PurchaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseController.swift; sourceTree = "<group>"; };
 		540ABCA227665E1F003AD700 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		540ABCA72766A121003AD700 /* EmptyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		540F087D2762C15D00D893AF /* StateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTableViewCell.swift; sourceTree = "<group>"; };
@@ -71,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5401ABE2276C18D10010F958 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5401ABE3276C19200010F958 /* PurchaseController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		540ABCA427666601003AD700 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +105,7 @@
 			children = (
 				542C21DA2746906100F7CF3B /* Context.swift */,
 				540ABCA72766A121003AD700 /* EmptyTableView.swift */,
+				5401ABDE276BF7450010F958 /* KeyboardDismiss.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -209,6 +224,7 @@
 		5497AE27273E2FFE00E37A6C /* Purchases */ = {
 			isa = PBXGroup;
 			children = (
+				5401ABE2276C18D10010F958 /* Controller */,
 				5497AE28273E300600E37A6C /* Views */,
 			);
 			path = Purchases;
@@ -218,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				5497AE29273E301C00E37A6C /* PurchasesView.storyboard */,
+				5401ABE0276C18980010F958 /* PurchaseViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,13 +317,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5497AE0C273DFD4A00E37A6C /* HomeViewController.swift in Sources */,
+				5401ABE1276C18980010F958 /* PurchaseViewController.swift in Sources */,
 				54A5A0732762ACBA00B0F2C0 /* StateController.swift in Sources */,
 				5497AE08273DFD4A00E37A6C /* AppDelegate.swift in Sources */,
+				5401ABDF276BF7450010F958 /* KeyboardDismiss.swift in Sources */,
 				542C21DB2746906100F7CF3B /* Context.swift in Sources */,
 				540F087F2762C15D00D893AF /* StateTableViewCell.swift in Sources */,
 				5497AE2C273E38D500E37A6C /* DetailProductViewController.swift in Sources */,
 				54BF8A3A2749964300388AB4 /* HomeController.swift in Sources */,
 				540ABCA82766A121003AD700 /* EmptyTableView.swift in Sources */,
+				5401ABE4276C19200010F958 /* PurchaseController.swift in Sources */,
 				542C222A27469A3200F7CF3B /* Purchase.swift in Sources */,
 				542C222D2746E2C900F7CF3B /* State.swift in Sources */,
 				5497AE0A273DFD4A00E37A6C /* SceneDelegate.swift in Sources */,

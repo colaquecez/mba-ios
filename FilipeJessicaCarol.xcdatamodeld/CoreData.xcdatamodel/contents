@@ -12,7 +12,7 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="taxes" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="products" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Product" inverseName="states" inverseEntity="Product"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="states" inverseEntity="Product"/>
     </entity>
     <elements>
         <element name="Product" positionX="-277.406494140625" positionY="2.08966064453125" width="143.1824951171875" height="119"/>

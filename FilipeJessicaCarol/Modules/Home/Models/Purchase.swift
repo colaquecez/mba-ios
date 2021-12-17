@@ -10,13 +10,13 @@ import UIKit
 
 class Purchase: Identifiable, ObservableObject {
     @Published var name: String
-    @Published var state: String
+    @Published var state: State
     @Published var value: Float
     @Published var isCard: Bool
     @Published var sku: String
     @Published var image: Data
     
-    init(name:String, state: String = "valor", value: Float, isCard: Bool, sku: String, image: Data) {
+    init(name:String, state: State, value: Float, isCard: Bool, sku: String, image: Data) {
         self.name = name
         self.state = state
         self.value = value

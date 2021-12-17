@@ -16,6 +16,11 @@ class HomeController: NSObject {
         return purchases.isEmpty
     }
     
+    func getPurchases() -> [Product] {
+        loadingPurchases()
+        return purchases
+    }
+    
     func loadingPurchases() {
         let managedContext = context
         purchases = []
@@ -67,9 +72,8 @@ class HomeController: NSObject {
         product.name = purchase.name
         product.value = purchase.value
         
-        let states = State(context: managedContext)
-        states.name = purchase.state
-        product.states = states
+        
+        product.states = purchase.state
         
         product.sku = purchase.sku
         product.image = purchase.image
